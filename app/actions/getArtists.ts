@@ -1,6 +1,7 @@
 "use server"
 
 import type { ArtistList } from "@/types/artistList"
+import artistList from "@/data/artists.json"
 
 /**
  * Loads artists from data/artists.json via dynamic import.
@@ -8,9 +9,8 @@ import type { ArtistList } from "@/types/artistList"
  */
 export async function getArtists(): Promise<ArtistList> {
     try {
-        const mod = await import("@/data/artists.json")
-        const data = (mod as any).default ?? mod
-        return Array.isArray(data) ? (data as ArtistList) : []
+        const data = artistList as ArtistList
+        return Array.isArray(data) ? data : []
     } catch {
         return []
     }
