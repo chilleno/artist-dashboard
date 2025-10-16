@@ -1,7 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // Allow loading images from Songstats (logos) and Spotify CDN (album/track art)
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'songstats.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co',
+        pathname: '/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
