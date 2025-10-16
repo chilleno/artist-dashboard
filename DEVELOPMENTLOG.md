@@ -60,3 +60,53 @@ NO AI used.
 
 ## 5 - Listing available artists in dashboard at the home page
 
+- I asked directly to the agent to create a server action in the main page to fetch the data/artists.json file and use it in the page.
+<pre>
+**Goal:** create server action to fetch data from json file
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+we are going to create a server action in a separate file, this server action should get the data from the data/artists.json file and return as array.
+we are also doing a validation if the file is not present return an empty array.
+
+and we are going to console.log the data in the start of the page
+
+**Result:**
+- the agent provides the needed server action in the folder app/actions as we told him in the context.md file.
+- I asked the agent to modify the code from a fs.readfile to a simple import because is cleaner and not need to use fs 
+</pre>
+
+-  Now we had the data loged and we are sure the data is available. we ask the agent to render the list using the item component from shadcn
+
+<pre>
+**Goal:** use the data returned from the server action to render the artists list 
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+we are going to use the shadcn mcp to install the item component and we are going to use the avatar version to render all the items of the list. 
+
+the action button should rediret us to the dashboard of that artists. 
+
+remember to delete all the current example content first
+
+**Result:**
+- Agent added via pnpm the components shadcn/item and shadcn/avatar to build the list.
+- also create a "separator" component that I asked to replace with the shadcn one because is not needed to create it.
+- Render the infomation as needed and the button works as expected.
+
+**Learning:**
+- if I dont spcify all the components to download the agent probable would create them from scratch. I had to ask it again to download the separator in a separate prompt
+- also we need to install manually radix component because shadcn mcp dont do the job.
+</pre>
+
+- With the list created We asked some quick changes to the AI while I was making sure the content is centered in the screen in all screen-sizes
+
+
