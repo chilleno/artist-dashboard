@@ -54,7 +54,8 @@ export function FollowersPie({ followerBreakdown }: { followerBreakdown: Followe
         <div className="w-full">
             <ChartContainer
                 config={chartConfig}
-                className="mx-auto w-full h-[360px] sm:h-auto sm:aspect-square max-h-[360px]"
+                className="mx-auto w-full !aspect-auto h-[320px] sm:h-[280px] md:h-[320px] lg:h-[360px]"
+                style={{ aspectRatio: "auto" }}
             >
                 <PieChart>
                     <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
