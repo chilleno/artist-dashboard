@@ -10,6 +10,11 @@
     "Boujee",
     "Trap Latino"
   ],
+  "salesData": {
+    "totalSales": "2195700",
+    "ticketsSold": "2150000",
+    "merchSold": "45700"
+  },
   "socialMediaLinks": [
     {
       "name": "Spotify",
