@@ -250,4 +250,39 @@ show salesData value from artist object in the 3 selected bento elements using t
 - data shows as expected 
 </pre>
 
-# 12 - 
+# 12 - render fan engagements data 
+
+- To render this data I wanted to show a map, but the map needs webgl so I want to validate that first using the agent to do the job
+<pre>
+**Goal:** validate if the browser is using webgl or not
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task: 
+inside the selected bentocard we need to add a validation and show a text if the current navigator is using webgl or not, and print a message that said "is using webgl" or "is not using webgl" 
+
+**Result:**
+- shows validation as expected 
+- 
+</pre>
+
+- now we had the validation when the webgl is not active we are going to use the component dottedmap
+
+<pre>
+**Goal:** when webgl is not available shows a dotted map component with the spotify listeners int he world
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+I need to install with the magicui mcp the component Dotted Map, and when the browser is not using webgl we show the dotted map.
+
+when the webgl is active we keep showwing the message, we are going to update it later.
+
+**Result:**
+
+</pre>
