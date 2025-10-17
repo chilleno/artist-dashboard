@@ -181,3 +181,32 @@ the value obtained from the server action should be printed in the console with 
 - the agent tried to fetch the data using fs.fileread and I updated it with a dynamic data import
 - everything else was done as expected
 </pre>
+
+# 9 - creating the grid to place the dashboard data
+
+I decide to use a bento grid because is a good way to show multiple data in the same screen. 
+used the agent to create the grid: 
+<pre>
+**Goal:** create the dashboard bento grid 
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+create in the dashboard a bento grid, responsive, every item in the grid please add it a different bg color to make sure the grid works well in all devices before we add the content to them.
+
+we need to make sure we are making space for the next info:
+
+large column for last releases
+large and wide for a map to show listeres arount the world.
+some squares for sales analytics.
+you can add the text of what is expected in each bento space from now.
+
+when we decide the bento grid distribution we are going to add the content.
+**Result:**
+- colorized bento grid ready to work
+- no changes made from agent result 
+</pre>
+
