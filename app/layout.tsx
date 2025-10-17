@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme/theme-provider";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,11 +25,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="fixed right-4 top-4 z-50">
+            <AnimatedThemeToggler
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border bg-background text-foreground shadow-sm"
+              aria-label="Toggle theme"
+            />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
