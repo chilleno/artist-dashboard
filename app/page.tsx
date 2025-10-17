@@ -8,7 +8,7 @@ import { TypographyH4 } from "@/components/shared/typography-h4";
 
 export default async function Home() {
   const artists = await getArtists();
-  
+
   return (
     <div className="container mx-auto p-6 max-w-xl">
       <div className="mb-3">
