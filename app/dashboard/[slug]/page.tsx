@@ -4,6 +4,11 @@ import { notFound } from "next/navigation"
 import { BentoCard } from "@/components/dashboard/bento-card"
 import { LastReleases } from "@/components/dashboard/last-releases"
 import { SalesKPI } from "@/components/dashboard/sales-kpis"
+import { WebGLStatus } from "@/components/dashboard/webgl-status"
+import { DottedMap } from "@/components/ui/dotted-map"
+import { Globe } from "@/components/ui/globe"
+import { buildAudienceMarkers } from "@/lib/audience-markers"
+import { ArtistInfo } from "@/components/dashboard/artist-info"
 
 export default async function Dashboard({
   params,
@@ -13,6 +18,9 @@ export default async function Dashboard({
   const { slug } = await params
   const artist = await getArtistBySlug(slug)
   if (!artist) return notFound()
+
+  // Build audience markers for DottedMap and Globe using a helper
+  const { dottedMarkers, globeMarkers } = buildAudienceMarkers(artist)
 
   return (
     <div className="font-sans min-h-screen p-6 sm:p-8">
@@ -28,6 +36,18 @@ export default async function Dashboard({
 
         {/* Responsive Bento Grid */}
         <section className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-6">
+          {/* show artist info */}
+          <BentoCard
+            title="Artist"
+            description="Profile & social links"
+            className="sm:col-span-6 lg:col-span-6 lg:row-span-2"
+          >
+            <ArtistInfo
+              artist={artist}
+              imageUrl={"https://i.scdn.co/image/ab676161000051740f682e8d99b232d621a25c3b"}
+            />
+          </BentoCard>
+
           {/* Sales analytics KPIs - split into three tiles using salesData */}
           <BentoCard
             title="Total Sales"
@@ -65,12 +85,48 @@ export default async function Dashboard({
             />
           </BentoCard>
 
+
+          {/* show artist social media stats*/}
+          <BentoCard
+            title="Artist"
+            description="Profile & social links"
+            className="sm:col-span-6 lg:col-span-3 lg:row-span-2"
+          >
+            <ArtistInfo
+              artist={artist}
+              imageUrl={"https://i.scdn.co/image/ab676161000051740f682e8d99b232d621a25c3b"}
+            />
+          </BentoCard>
+          <BentoCard
+            title="Artist"
+            description="Profile & social links"
+            className="sm:col-span-6 lg:col-span-3 lg:row-span-2"
+          >
+            <ArtistInfo
+              artist={artist}
+              imageUrl={"https://i.scdn.co/image/ab676161000051740f682e8d99b232d621a25c3b"}
+            />
+          </BentoCard>
+
           {/* Large & wide for World Map of listeners */}
           <BentoCard
             title="Global Audience Map"
             description="Wide area for a world map showing listeners around the globe."
             className="sm:col-span-6 lg:col-span-6 lg:row-span-2"
-          />
+          >
+            <WebGLStatus
+              contentWhenSupported={
+                <div className="relative w-full aspect-[1/1] md:aspect-[2/1]">
+                  <Globe className="h-full w-full" markers={globeMarkers} />
+                </div>
+              }
+              fallbackWhenUnsupported={
+                <div className="relative w-full aspect-[1/1] md:aspect-[2/1]">
+                  <DottedMap className="h-full w-full" markers={dottedMarkers} />
+                </div>
+              }
+            />
+          </BentoCard>
 
           {/* Large column for Last Releases */}
           <BentoCard
