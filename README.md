@@ -51,9 +51,6 @@ pnpm build && pnpm start
 
 - Filters and drill-downs: filter map and charts by platform/country; click city to focus markers.
 - Persisted state: store user-selected filters (Zustand) and URL-sync for shareable views.
-- Tests: unit tests for data transforms and simple component tests (playwright for smoke flows).
-- Accessibility: refine focus states, chart ARIA labels, and keyboard interactions.
-- Data pipeline: migrate static JSON to a typed API layer; add caching and ISR.
 - Performance: virtualize long lists (ticker), memoize chart datasets, and lazy-load heavier blocks.
 - Code clean: At the end of my work, I usually do a final check to reorganize code that could be better.
 
