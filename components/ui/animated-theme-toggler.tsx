@@ -52,34 +52,45 @@ export const AnimatedThemeToggler = ({
     }
 
     // Use View Transitions if available; otherwise, just toggle without animation
-    const startViewTransition = (document as unknown as {
+    const doc = document as unknown as {
       startViewTransition?: (cb: () => void) => { ready: Promise<void> }
-    }).startViewTransition
-    if (typeof startViewTransition === "function") {
-      await startViewTransition(doToggle).ready
+    }
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-      const { top, left, width, height } =
-        buttonRef.current.getBoundingClientRect()
-      const x = left + width / 2
-      const y = top + height / 2
-      const maxRadius = Math.hypot(
-        Math.max(left, window.innerWidth - left),
-        Math.max(top, window.innerHeight - top)
-      )
+    if (typeof doc.startViewTransition === "function" && !prefersReducedMotion) {
+      try {
+        const vt = doc.startViewTransition(doToggle)
+        await vt.ready
 
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${maxRadius}px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration,
-          easing: "ease-in-out",
-          pseudoElement: "::view-transition-new(root)",
-        }
-      )
+        const { top, left, width, height } =
+          buttonRef.current.getBoundingClientRect()
+        const x = left + width / 2
+        const y = top + height / 2
+        const maxRadius = Math.hypot(
+          Math.max(left, window.innerWidth - left),
+          Math.max(top, window.innerHeight - top)
+        )
+
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${maxRadius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration,
+            easing: "ease-in-out",
+            pseudoElement: "::view-transition-new(root)",
+          }
+        )
+      } catch {
+        // If anything goes wrong, fall back to an immediate toggle
+        doToggle()
+      }
     } else {
       doToggle()
     }
