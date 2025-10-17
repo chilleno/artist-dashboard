@@ -9,6 +9,8 @@ import { DottedMap } from "@/components/ui/dotted-map"
 import { Globe } from "@/components/ui/globe"
 import { buildAudienceMarkers } from "@/lib/audience-markers"
 import { ArtistInfo } from "@/components/dashboard/artist-info"
+import { FollowersPie } from "@/components/dashboard/followers-pie"
+import { ScrollVelocityContainer, ScrollVelocityRow } from "@/components/ui/scroll-based-velocity"
 
 export default async function Dashboard({
   params,
@@ -86,31 +88,18 @@ export default async function Dashboard({
           </BentoCard>
 
 
-          {/* show artist social media stats*/}
+          {/* Followers by platform (Pie chart) */}
           <BentoCard
-            title="Artist"
-            description="Profile & social links"
-            className="sm:col-span-6 lg:col-span-3 lg:row-span-2"
+            title="Followers by Platform"
+            description="Distribution across social platforms"
+            className="sm:col-span-6 lg:col-span-6 lg:row-span-2"
           >
-            <ArtistInfo
-              artist={artist}
-              imageUrl={"https://i.scdn.co/image/ab676161000051740f682e8d99b232d621a25c3b"}
-            />
-          </BentoCard>
-          <BentoCard
-            title="Artist"
-            description="Profile & social links"
-            className="sm:col-span-6 lg:col-span-3 lg:row-span-2"
-          >
-            <ArtistInfo
-              artist={artist}
-              imageUrl={"https://i.scdn.co/image/ab676161000051740f682e8d99b232d621a25c3b"}
-            />
+            <FollowersPie followerBreakdown={artist.followerBreakdown} />
           </BentoCard>
 
           {/* Large & wide for World Map of listeners */}
           <BentoCard
-            title="Global Audience Map"
+            title="Global Audience Map "
             description="Wide area for a world map showing listeners around the globe."
             className="sm:col-span-6 lg:col-span-6 lg:row-span-2"
           >
@@ -126,6 +115,28 @@ export default async function Dashboard({
                 </div>
               }
             />
+
+            {/* Scroll-based velocity ticker with city listeners shown on the map */}
+            <div className="mt-3 border-t pt-2">
+              <ScrollVelocityContainer>
+                <ScrollVelocityRow baseVelocity={2} className="py-1">
+                  {artist.audienceMetrics?.listenersByCity?.map((c) => {
+                    const count = Number((c.currentMonthlyListeners || c.peakMonthlyListeners || "0").replace(/,/g, ""))
+                    const label = `${c.city}, ${c.country}`
+                    return (
+                      <span
+                        key={`${c.city}-${c.country}-${c.peakDate}`}
+                        className="mx-2 inline-flex items-center gap-2 rounded-md border bg-muted/40 px-2 py-1 text-[10px] sm:text-xs"
+                      >
+                        <span className="size-1.5 shrink-0 rounded-full bg-primary" />
+                        <span className="text-foreground/80">{label}</span>
+                        <span className="text-muted-foreground">{count.toLocaleString()} listeners</span>
+                      </span>
+                    )
+                  })}
+                </ScrollVelocityRow>
+              </ScrollVelocityContainer>
+            </div>
           </BentoCard>
 
           {/* Large column for Last Releases */}
