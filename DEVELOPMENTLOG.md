@@ -230,4 +230,24 @@ using the shadcn mcp add the card component and implement the last releases rend
 
 </pre>
 
-# 11 - 
+# 11 - render sales data
+
+with the agent's help I render some values in the top 3 bento boxes using the naimation of number ticker component
+<pre>
+**Goal:** use number ticket component to show sales data
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+install the number ticker using the magicui mcp and implement it.
+
+check the duki.json to find best data to show as sales analytics in the 3 selected bento elements using the number ticker
+
+**Result:**
+- data shows as expected
+</pre>
+
+# 12 - 
