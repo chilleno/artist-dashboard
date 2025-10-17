@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Check the DEMO
+
+[here](https://artist-dashboard-sigma.vercel.app/) you can check the a published version of the repo
+
+
+
+# How to Deploy 
+
+This is a [Next.js](https://nextjs.org)
 
 ## Getting Started
 
