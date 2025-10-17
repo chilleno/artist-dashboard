@@ -5,6 +5,7 @@ type BentoCardProps = {
   description?: string
   className?: string
   bgClassName?: string
+  children?: React.ReactNode
 }
 
 export function BentoCard({
@@ -12,12 +13,12 @@ export function BentoCard({
   description,
   className,
   bgClassName,
+  children,
 }: BentoCardProps) {
   return (
     <div
       className={cn(
         "relative overflow-hidden rounded-xl border p-4",
-        // fallback neutral background
         "bg-muted/30",
         bgClassName,
         className
@@ -29,6 +30,7 @@ export function BentoCard({
           <p className="text-sm text-muted-foreground">{description}</p>
         ) : null}
       </div>
+      {children ? <div className="mt-4">{children}</div> : null}
     </div>
   )
 }
