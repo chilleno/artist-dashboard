@@ -34,17 +34,12 @@
     {
       "name": "Apple Music",
       "url": "https://music.apple.com/us/artist/duki/408527217",
-      "logoUrl": "https://songstats.com/files/source-icons/apple-music.webp"
+      "logoUrl": "https://svgl.app/library/apple-music-icon.svg"
     },
     {
       "name": "Beatport",
       "url": "https://www.beatport.com/artist/duki/757467",
       "logoUrl": "https://songstats.com/files/source-icons/beatport.webp"
-    },
-    {
-      "name": "SoundCloud",
-      "url": "https://soundcloud.com/dukissj",
-      "logoUrl": "https://songstats.com/files/source-icons/soundcloud.webp"
     },
     {
       "name": "SoundCloud",
