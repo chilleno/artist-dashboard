@@ -16,9 +16,9 @@ export function ArtistInfo({ artist, imageUrl }: Props) {
     .join("")
 
   return (
-    <div className="flex flex-col gap-6 md:flex-row md:items-start">
+    <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:text-left">
       <div className="shrink-0">
-        <Avatar className="size-24 md:size-28">
+        <Avatar className="size-28 md:size-32">
           {imageUrl ? (
             <AvatarImage src={imageUrl} alt={name} />
           ) : null}
@@ -28,14 +28,14 @@ export function ArtistInfo({ artist, imageUrl }: Props) {
 
       <div className="flex-1 space-y-3">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight">{name}</h2>
+          <h2 className="text-2xl md:text-xl font-semibold tracking-tight">{name}</h2>
           {artist.artist?.country ? (
             <p className="text-muted-foreground text-sm">{artist.artist.country}</p>
           ) : null}
         </div>
 
         {artist.socialMediaLinks?.length ? (
-          <ul className="flex flex-wrap items-center gap-3">
+          <ul className="flex flex-wrap items-center justify-center gap-3 md:justify-start">
             {artist.socialMediaLinks.map((s) => (
               <li key={s.name + s.url}>
                 <a
