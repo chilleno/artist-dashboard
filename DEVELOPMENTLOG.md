@@ -210,3 +210,24 @@ when we decide the bento grid distribution we are going to add the content.
 - no changes made from agent result 
 </pre>
 
+# 10 - render last releases 
+
+with the agent help I created the last-releases component and implement it into the bento box
+<pre>
+**Goal:** Create last-releases component
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+using the shadcn mcp add the card component and implement the last releases rendered in those cards.
+
+**Result:**
+- the result shows the component as expected
+- I had to do a little fix with the container height to make it fit with his content
+
+</pre>
+
+# 11 - 
