@@ -3,6 +3,7 @@ import { getArtistBySlug } from "./actions/getArtistBySlug"
 import { notFound } from "next/navigation"
 import { BentoCard } from "@/components/dashboard/bento-card"
 import { LastReleases } from "@/components/dashboard/last-releases"
+import { SalesKPI } from "@/components/dashboard/sales-kpis"
 
 export default async function Dashboard({
   params,
@@ -26,35 +27,49 @@ export default async function Dashboard({
         </header>
 
         {/* Responsive Bento Grid */}
-        <section
-          className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-6"
-        >
-          {/* Sales analytics squares */}
+        <section className="grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-6">
+          {/* Sales analytics KPIs - split into three tiles using salesData */}
           <BentoCard
-            title="Sales Analytics #1"
-            description="KPIs and mini charts."
-            className="sm:col-span-3 lg:col-span-2"
-            bgClassName="bg-amber-100 dark:bg-amber-950/40"
-          />
+            title="Total Sales"
+            description="All-time sales across channels"
+            className="sm:col-span-2"
+          >
+            <SalesKPI
+              label="USD"
+              value={Number(artist.salesData?.totalSales)}
+              prefix="$"
+            />
+          </BentoCard>
+
           <BentoCard
-            title="Sales Analytics #2"
-            description="KPIs and mini charts."
-            className="sm:col-span-3 lg:col-span-2"
-            bgClassName="bg-rose-100 dark:bg-rose-950/40"
-          />
+            title="Tickets Sold"
+            description="Total sales from tickets sold"
+            className="sm:col-span-2"
+          >
+            <SalesKPI
+              label="USD"
+              value={Number(artist.salesData?.ticketsSold)}
+              prefix="$"
+            />
+          </BentoCard>
+
           <BentoCard
-            title="Sales Analytics #3"
-            description="KPIs and mini charts."
-            className="sm:col-span-6 lg:col-span-2"
-            bgClassName="bg-indigo-100 dark:bg-indigo-950/40"
-          />
+            title="Merch Sold"
+            description="Total sales from merchandise"
+            className="sm:col-span-2"
+          >
+            <SalesKPI
+              label="USD"
+              value={Number(artist.salesData?.merchSold)}
+              prefix="$"
+            />
+          </BentoCard>
 
           {/* Large & wide for World Map of listeners */}
           <BentoCard
             title="Global Audience Map"
             description="Wide area for a world map showing listeners around the globe."
             className="sm:col-span-6 lg:col-span-6 lg:row-span-2"
-            bgClassName="bg-emerald-100 dark:bg-emerald-950/40"
           />
 
           {/* Large column for Last Releases */}
