@@ -244,10 +244,10 @@ do the next task:
 
 install the number ticker using the magicui mcp and implement it.
 
-check the duki.json to find best data to show as sales analytics in the 3 selected bento elements using the number ticker
+show salesData value from artist object in the 3 selected bento elements using the number ticker
 
 **Result:**
-- data shows as expected
+- data shows as expected 
 </pre>
 
 # 12 - 
