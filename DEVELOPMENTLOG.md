@@ -110,3 +110,26 @@ remember to delete all the current example content first
 - With the list created We asked some quick changes to the AI while I was making sure the content is centered in the screen in all screen-sizes
 
 
+# 6 - Implement theming 
+
+With no agent I did the implementation of the theme to add light/dark mode support.
+
+- Asked the Agent to implement the magic-ui toggle theming button using magic-ui mcp. 
+<pre>
+**Goal:** implement animated theme toggle in the layout
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+using magicui mcp install magicui/animated-theme-toggler and implement it in the layour so we can access to the button in all the pages, also please make sure to fix it at the top right
+
+**Result:**
+- Agent added via pnpm the components animated-theme-toggler from magic ui. 
+- Agent added the feature successful as requested
+
+</pre>
+
+# 7- 
