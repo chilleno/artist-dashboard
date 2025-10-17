@@ -117,10 +117,18 @@ export interface AudienceMetrics {
   countryCharts: CountryChartItem[]
 }
 
+// Sales data
+export interface SalesData {
+  totalSales: string
+  ticketsSold: string
+  merchSold: string
+}
+
 // Root document
 export interface Artist {
   artist: ArtistIdentity
   genres: string[]
+  salesData: SalesData
   socialMediaLinks: SocialMediaLink[]
   performance: Performance
   followerBreakdown: FollowerBreakdown
