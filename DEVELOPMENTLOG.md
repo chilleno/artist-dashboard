@@ -132,4 +132,52 @@ using magicui mcp install magicui/animated-theme-toggler and implement it in the
 
 </pre>
 
-# 7- 
+# 7- add validation on dashboard page when slug is not a valid artist
+I customize the not-found page using the agent 
+<pre>
+**Goal:** create a custom 404 page
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+using magic ui mcp add @magicui/spinning-text and create a custom 404 page with a nice message with that component
+
+**Result:**
+- Agent added via pnpm the components animated-spinning-text
+- agent create without issues the custom not found page
+
+**Aditional changes**
+- from agent created page I did some changes with spacing because the elements were too close on each others.
+</pre>
+
+# 8 - fetch data from slug and call server action to get artist data
+
+I asked the agent to create a server action that fetch the data from a prop and pass the slug as the prop 
+when null show not-found page.
+<pre>
+**Goal:** create a custom 404 page
+**AI Tool Used:** copilot + GTP5
+
+**Prompt/Approach:**
+Following ALL the instructions into the CONTEXT.md file.
+
+do the next task:
+
+for the dashboard create a server action that receive a param, this param should be the slug of the dashboard so we can fetch the data from json files dynamically with the slug.
+
+the detailed task is:
+
+add the server action and pass the slug as prop
+in the server action, find the file with the name is equal the prop value, if not send a null.
+the value obtained from the server action should be printed in the console with a console.log
+
+**Result:**
+- the agent tried to fetch the data using fs.fileread and I updated it with a dynamic data import
+- everything else was done as expected
+</pre>
